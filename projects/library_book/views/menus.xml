@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_library_root" name="Library" sequence="10"/>
+
+    <menuitem id="menu_library_masters" name="Master Data"
+              parent="menu_library_root" sequence="10"/>
+
+    <menuitem id="menu_library_books" name="Books"
+              parent="menu_library_masters" action="action_book" sequence="10"/>
+
+    <menuitem id="menu_library_categories" name="Categories"
+              parent="menu_library_masters" action="action_category" sequence="20"/>
+
+    <menuitem id="menu_library_members" name="Members"
+              parent="menu_library_masters" action="action_member" sequence="30"/>
+
+    <menuitem id="menu_library_operations" name="Operations"
+              parent="menu_library_root" sequence="20"/>
+
+    <menuitem id="menu_library_borrows" name="Borrows"
+              parent="menu_library_operations" action="action_borrow" sequence="10"/>
+</odoo>

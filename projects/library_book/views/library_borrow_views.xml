@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_borrow_tree" model="ir.ui.view">
+        <field name="name">library.borrow.tree</field>
+        <field name="model">library.borrow</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="book_id"/>
+                <field name="member_id"/>
+                <field name="borrow_date"/>
+                <field name="expected_return_date"/>
+                <field name="return_date"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'returned'"
+                       decoration-warning="state == 'ongoing'"
+                       decoration-danger="state == 'overdue'"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_borrow_form" model="ir.ui.view">
+        <field name="name">library.borrow.form</field>
+        <field name="model">library.borrow</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_return" string="Return Book"
+                            type="object" states="ongoing,overdue"
+                            class="btn-primary"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="book_id"/>
+                            <field name="member_id"/>
+                        </group>
+                        <group>
+                            <field name="borrow_date"/>
+                            <field name="expected_return_date"/>
+                            <field name="return_date"/>
+                        </group>
+                    </group>
+                    <field name="notes"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_borrow_search" model="ir.ui.view">
+        <field name="name">library.borrow.search</field>
+        <field name="model">library.borrow</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="book_id"/>
+                <field name="member_id"/>
+                <filter name="ongoing" string="Ongoing"
+                        domain="[('state','=','ongoing')]"/>
+                <filter name="overdue" string="Overdue"
+                        domain="[('state','=','overdue')]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_borrow" model="ir.actions.act_window">
+        <field name="name">Borrows</field>
+        <field name="res_model">library.borrow</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_borrow_search"/>
+    </record>
+
+    <record id="view_borrow_wizard_form" model="ir.ui.view">
+        <field name="name">library.borrow.wizard.form</field>
+        <field name="model">library.borrow.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="member_id"/>
+                    <field name="expected_return_date"/>
+                </group>
+                <footer>
+                    <button name="action_borrow" string="Borrow" type="object"
+                            class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_borrow_wizard" model="ir.actions.act_window">
+        <field name="name">Borrow Books</field>
+        <field name="res_model">library.borrow.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="model_library_book"/>
+        <field name="binding_view_types">list</field>
+    </record>
+</odoo>

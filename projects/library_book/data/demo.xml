@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="cat_fiction" model="library.category">
+        <field name="name">Fiction</field>
+    </record>
+    <record id="cat_non_fiction" model="library.category">
+        <field name="name">Non-Fiction</field>
+    </record>
+    <record id="cat_science" model="library.category">
+        <field name="name">Science</field>
+    </record>
+
+    <record id="book_1" model="library.book">
+        <field name="name">To Kill a Mockingbird</field>
+        <field name="author">Harper Lee</field>
+        <field name="isbn">9780061120084</field>
+        <field name="category_id" ref="cat_fiction"/>
+        <field name="state">available</field>
+        <field name="price">19.99</field>
+    </record>
+    <record id="book_2" model="library.book">
+        <field name="name">A Brief History of Time</field>
+        <field name="author">Stephen Hawking</field>
+        <field name="isbn">9780553380163</field>
+        <field name="category_id" ref="cat_science"/>
+        <field name="state">available</field>
+        <field name="price">15.99</field>
+    </record>
+</odoo>

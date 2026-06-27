@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="rule_book_company" model="ir.rule">
+        <field name="name">Book: multi-company</field>
+        <field name="model_id" ref="model_library_book"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[('company_id','=',user.company_id.id)]</field>
+    </record>
+
+    <record id="rule_member_company" model="ir.rule">
+        <field name="name">Member: multi-company</field>
+        <field name="model_id" ref="model_library_member"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[('company_id','=',user.company_id.id)]</field>
+    </record>
+
+    <record id="rule_borrow_company" model="ir.rule">
+        <field name="name">Borrow: multi-company</field>
+        <field name="model_id" ref="model_library_borrow"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[('company_id','=',user.company_id.id)]</field>
+    </record>
+</odoo>

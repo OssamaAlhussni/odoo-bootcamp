@@ -1,0 +1,23 @@
+{
+    "name": "Library Book Management",
+    "version": "18.0.1.0.0",
+    "category": "Services/Library",
+    "summary": "Manage books, categories, and borrowing",
+    "author": "Mohammad Thabet",
+    "depends": ["base", "mail"],
+    "data": [
+        "security/ir.model.access.csv",
+        "security/security.xml",
+        "data/data.xml",
+        "views/library_category_views.xml",
+        "views/library_book_views.xml",
+        "views/library_member_views.xml",
+        "views/library_borrow_views.xml",
+        "views/menus.xml",
+        "report/library_report_views.xml",
+    ],
+    "demo": ["data/demo.xml"],
+    "installable": True,
+    "application": True,
+    "license": "LGPL-3",
+}
