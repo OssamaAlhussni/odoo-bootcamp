@@ -1,3 +1,17 @@
+# Odoo Security: ACL (Access Control List)
+# =========================================
+# Format: id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+#
+# Each line grants permissions on ONE model to ONE user group.
+# 1 = allowed, 0 = denied
+# Order: Read, Write, Create, Delete (unlink)
+#
+# base.group_user = all internal users (Employees)
+# Empty group_id = public (all users, including portal/website)
+#
+# IMPORTANT: Every model used in views MUST have at least one ACL entry,
+# otherwise users get "Access Denied" errors.
+
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_estate_property_user,estate.property.user,model_estate_property,base.group_user,1,1,1,1
 access_estate_property_type_user,estate.property.type.user,model_estate_property_type,base.group_user,1,1,1,1

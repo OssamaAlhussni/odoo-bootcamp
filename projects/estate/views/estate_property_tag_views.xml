@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    PROPERTY TAG VIEWS
+    ==================
+    Tags are labels with colors that get applied to properties.
+    The color field uses widget="color" to show a color picker.
+-->
+
 <odoo>
     <record id="estate_property_tag_action" model="ir.actions.act_window">
         <field name="name">Property Tags</field>
@@ -12,6 +19,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
+                <!-- widget="color" shows a colored circle + color picker -->
                 <field name="color" widget="color"/>
             </tree>
         </field>

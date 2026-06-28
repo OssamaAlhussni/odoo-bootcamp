@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    PROPERTY OFFER VIEWS
+    ====================
+    Offers are made by partners on properties.
+    They can be accepted or refused via buttons in the form view.
+    
+    Note: There's no separate menu for offers — they're accessed
+    from the "Offers" notebook page on the property form view.
+    But we still define tree and form views here so Odoo can render them.
+-->
+
 <odoo>
+    <!-- TREE VIEW for offer lists (used in the One2many inline) -->
     <record id="estate_property_offer_view_tree" model="ir.ui.view">
         <field name="name">estate.property.offer.tree</field>
         <field name="model">estate.property.offer</field>
@@ -16,17 +28,20 @@
         </field>
     </record>
 
+    <!-- FORM VIEW for individual offer details -->
     <record id="estate_property_offer_view_form" model="ir.ui.view">
         <field name="name">estate.property.offer.form</field>
         <field name="model">estate.property.offer</field>
         <field name="arch" type="xml">
             <form>
+                <!-- Header with action buttons -->
                 <header>
+                    <!-- Accept and Refuse buttons for the offer -->
                     <button name="action_accept" string="Accept" type="object"
-                            class="btn-primary" states="draft"
+                            class="btn-primary"
                             invisible="status == 'accepted'"/>
-                    <button name="action_refuse" string="Refuse" type="object"
-                            states="draft"/>
+                    <button name="action_refuse" string="Refuse" type="object"/>
+                    <!-- Show current status -->
                     <field name="status" widget="statusbar"/>
                 </header>
                 <sheet>

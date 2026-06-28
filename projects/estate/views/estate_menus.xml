@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    MENU DEFINITIONS
+    ================
+    Menus create the navigation structure in Odoo's sidebar.
+    They nest inside each other using the parent attribute.
+    
+    Structure:
+    Real Estate                         ← Root menu (app)
+    ├── Properties                      ← First level
+    │   └── Properties                  ← Action (opens the property list)
+    └── Settings                        ← First level
+        ├── Property Types              ← Action
+        └── Property Tags               ← Action
+    
+    Each action menu item references an ir.actions.act_window record
+    which defines what view to show and for which model.
+-->
 <odoo>
+    <!-- Root menu (app) — appears in the main Odoo app switcher -->
     <menuitem id="estate_menu_root" name="Real Estate">
+        
+        <!-- Properties section -->
         <menuitem id="estate_first_level_menu" name="Properties">
+            <!-- action= references the ID of the act_window record -->
             <menuitem id="estate_model_menu_action" action="estate_property_action"/>
         </menuitem>
+        
+        <!-- Settings section (admin config) -->
         <menuitem id="estate_type_first_level_menu" name="Settings">
             <menuitem id="estate_type_model_menu_action" action="estate_property_type_action"/>
             <menuitem id="estate_tag_model_menu_action" action="estate_property_tag_action"/>

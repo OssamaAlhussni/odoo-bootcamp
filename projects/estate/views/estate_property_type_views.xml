@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    PROPERTY TYPE VIEWS
+    ===================
+    Simple views for the estate.property.type model.
+    Each type is just a name (e.g., "House", "Apartment", "Villa").
+-->
+
 <odoo>
     <record id="estate_property_type_action" model="ir.actions.act_window">
         <field name="name">Property Types</field>
@@ -10,6 +17,7 @@
         <field name="name">estate.property.type.tree</field>
         <field name="model">estate.property.type</field>
         <field name="arch" type="xml">
+            <!-- Simple list showing just the name -->
             <tree>
                 <field name="name"/>
             </tree>

@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    ACCOUNTING VIEW INHERITANCE
+    ===========================
+    When estate_accounts is installed alongside estate,
+    this view adds accounting fields to the property form.
+    
+    View inheritance uses XPath to find a position in the
+    PARENT view (estate.estate_property_view_form) and insert
+    new content there.
+-->
 <odoo>
     <record id="estate_property_view_form_inherit" model="ir.ui.view">
         <field name="name">estate.property.form.inherit.account</field>
         <field name="model">estate.property</field>
+        <!-- Inherit the form view from the estate module -->
         <field name="inherit_id" ref="estate.estate_property_view_form"/>
         <field name="arch" type="xml">
+            <!-- Add journal_id field after selling_price -->
             <xpath expr="//field[@name='selling_price']" position="after">
                 <field name="journal_id"/>
             </xpath>

@@ -1,12 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    USER FORM INHERITANCE
+    =====================
+    This extends the built-in user form (from base module)
+    to show the properties assigned to each salesperson.
+    
+    Key concept: View Inheritance
+    - inherit_id = tells Odoo which view to extend
+    - We use XPath to find a specific position in the existing view
+    - position="after" = insert our content after the target element
+    
+    This lets us add fields to existing Odoo views without
+    rewriting the entire view!
+-->
+
 <odoo>
     <record id="res_users_view_form_inherit_estate" model="ir.ui.view">
         <field name="name">res.users.form.inherit.estate</field>
         <field name="model">res.users</field>
+        <!-- Inherit the base user form view -->
         <field name="inherit_id" ref="base.view_users_form"/>
         <field name="arch" type="xml">
+            <!-- XPath: find the group_ids field and add content AFTER it -->
             <xpath expr="//field[@name='group_ids']" position="after">
                 <group string="Real Estate">
+                    <!-- Show properties assigned to this user (read-only) -->
                     <field name="property_ids" readonly="1"/>
                 </group>
             </xpath>
